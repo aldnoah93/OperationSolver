@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Logic", "OperationSolver.Logic\OperationsSolver.Logic.csproj", "{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6} = {DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Models", "OperationSolver.Models\OperationsSolver.Models.csproj", "{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86DAB97F-6508-490A-8CBF-FA76ECC246AF}
+	EndGlobalSection
+EndGlobal
