@@ -6,7 +6,7 @@ namespace OperationsSolver.Models
     {
         [EnumMember(Value = "sum")]
         Sum,
-        [EnumMember(Value = "Average")]
+        [EnumMember(Value = "average")]
         Average,
         [EnumMember(Value = "min")]
         Min,
