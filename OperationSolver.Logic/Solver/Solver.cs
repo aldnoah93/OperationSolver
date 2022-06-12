@@ -5,30 +5,46 @@ namespace OperationsSolver.Logic.Solver
 {
     public class Solver
     {
-        public void PrintSolution(Data _record)
+        public static IList<Task> Solve(Data data)
         {
-            foreach(var r in _record.Generators)
+            var tasks = new List<Task>();
+            foreach(var generator in data.Generators)
             {
-                IOperation<double> operation;
-                switch(r.Operation)
+                var task = Task.Run(async() =>
                 {
-                    case OperationType.Sum:
-                        operation = new Sum();
-                        break;
-                    case OperationType.Average:
-                        operation = new Average();
-                        break;
-                    case OperationType.Min:
-                        operation = new Min();
-                        break;
-                    case OperationType.Max:
-                        operation = new Max();
-                        break;
-                    default:
-                        throw new NotSupportedException("The operation is not supported!");
-                        break;
-                }
+                    IOperation<double> operation = OperationFactory(generator.Operation);
+                    foreach (var values in data.Datasets)
+                    {
+                        var result = ApplyOperation(values, generator.Name, operation);
+                        Console.WriteLine(result);
+                        await Task.Delay(generator.Interval * 1000);
+                    }
+                });
+                tasks.Add(task);
             }
+            return tasks;
+        }
+
+        public static IOperation<double> OperationFactory(OperationType ot)
+        {
+            IOperation<double> operation = ot switch
+            {
+                OperationType.Sum => new Sum(),
+                OperationType.Average => new Average(),
+                OperationType.Min => new Min(),
+                OperationType.Max => new Max(),
+                _ => throw new NotSupportedException("The operation is not supported!"),
+            };
+            return operation;
+        }
+        public static string ApplyOperation(IEnumerable<double> numbers, string operationName ,IOperation<double> operation)
+        {
+            return $"{GetTimeStamp(DateTime.Now)} {operationName} {operation.Calculate(numbers)}";
+        }
+
+        public static string GetTimeStamp(DateTime date)
+        {
+            return date.ToString("HH:mm:ss");
         }
     }
 }
