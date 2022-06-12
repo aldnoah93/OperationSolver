@@ -5,7 +5,7 @@ namespace OperationsSolver.Logic.Solver
 {
     public class Solver
     {
-        public static IList<Task> Solve(Data data)
+        public static IList<Task> Solve(Data data, Action<string> action)
         {
             var tasks = new List<Task>();
             foreach(var generator in data.Generators)
@@ -16,7 +16,7 @@ namespace OperationsSolver.Logic.Solver
                     foreach (var values in data.Datasets)
                     {
                         var result = ApplyOperation(values, generator.Name, operation);
-                        Console.WriteLine(result);
+                        action(result);
                         await Task.Delay(generator.Interval * 1000);
                     }
                 });

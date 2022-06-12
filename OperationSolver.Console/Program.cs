@@ -24,5 +24,5 @@ var data = new Data()
 };
 
 
-await Task.WhenAll(Solver.Solve(data));
+await Task.WhenAll(Solver.Solve(data, Console.WriteLine));
 
