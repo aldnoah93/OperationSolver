@@ -39,12 +39,7 @@ namespace OperationsSolver.Logic.Solver
         }
         private string ApplyOperation(IEnumerable<double> numbers, string operationName ,IOperation<double> operation)
         {
-            return $"{GetTimeStamp(DateTime.Now)} {operationName} {operation.Calculate(numbers)}";
-        }
-
-        private string GetTimeStamp(DateTime date)
-        {
-            return date.ToString("HH:mm:ss");
+            return $"{DateTime.Now:HH:mm:ss} {operationName} {operation.Calculate(numbers):#.##}";
         }
     }
 }
