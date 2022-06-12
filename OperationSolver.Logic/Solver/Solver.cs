@@ -3,9 +3,9 @@ using OperationsSolver.Models;
 
 namespace OperationsSolver.Logic.Solver
 {
-    public class Solver
+    public class Solver : ISolver
     {
-        public static IList<Task> Solve(Data data, Action<string> action)
+        public IList<Task> Solve(Data data, Action<string> action)
         {
             var tasks = new List<Task>();
             foreach(var generator in data.Generators)
@@ -13,7 +13,7 @@ namespace OperationsSolver.Logic.Solver
                 var task = Task.Run(async() =>
                 {
                     IOperation<double> operation = OperationFactory(generator.Operation);
-                    foreach (var values in data.Datasets)
+                    foreach(var values in data.Datasets)
                     {
                         var result = ApplyOperation(values, generator.Name, operation);
                         action(result);
@@ -25,7 +25,7 @@ namespace OperationsSolver.Logic.Solver
             return tasks;
         }
 
-        public static IOperation<double> OperationFactory(OperationType ot)
+        public IOperation<double> OperationFactory(OperationType ot)
         {
             IOperation<double> operation = ot switch
             {
@@ -37,12 +37,12 @@ namespace OperationsSolver.Logic.Solver
             };
             return operation;
         }
-        public static string ApplyOperation(IEnumerable<double> numbers, string operationName ,IOperation<double> operation)
+        private string ApplyOperation(IEnumerable<double> numbers, string operationName ,IOperation<double> operation)
         {
             return $"{GetTimeStamp(DateTime.Now)} {operationName} {operation.Calculate(numbers)}";
         }
 
-        public static string GetTimeStamp(DateTime date)
+        private string GetTimeStamp(DateTime date)
         {
             return date.ToString("HH:mm:ss");
         }

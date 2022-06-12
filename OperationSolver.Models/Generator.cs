@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace OperationsSolver.Models
 {
@@ -10,14 +11,17 @@ namespace OperationsSolver.Models
         Average,
         [EnumMember(Value = "min")]
         Min,
-        [EnumMember(Value = "Max")]
+        [EnumMember(Value = "max")]
         Max
     }
 
     public class Generator
     {
+        [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
+        [JsonPropertyName("interval")]
         public int Interval { get; set; }
+        [JsonPropertyName("operation")]
         public OperationType Operation { get; set; }
     }
 }
