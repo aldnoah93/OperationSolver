@@ -1,13 +1,8 @@
 ﻿using OperationsSolver.Logic.IO;
 using OperationsSolver.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace OperationsSolver.Test.IO
+namespace OperationsSolver.Test.Logic.IO
 {
     public class JsonReaderTest
     {
