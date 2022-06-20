@@ -13,12 +13,31 @@ namespace OperationsSolver.Logic.Solver
                 var task = Task.Run(async() =>
                 {
                     IOperation<double> operation = OperationFactory(generator.Operation);
-                    foreach(var values in data.Datasets)
+
+                    var size = data.Datasets.Count();
+                    var enumerator = data.Datasets.GetEnumerator();
+                    for (var i = 0; i < size; i++)
                     {
-                        var result = ApplyOperation(values, generator.Name, operation);
+                        enumerator.MoveNext();
+                        var values = enumerator.Current;
+                        var operationResult = operation.Calculate(values);
+                        var result = ApplyOperation(generator.Name, operationResult);
                         action(result);
-                        await Task.Delay(generator.Interval * 1000);
+                        if (i != size - 1)
+                        {
+                            await Task.Delay(generator.Interval * 1000);
+                        }
+
                     }
+
+
+                    //foreach (var values in data.Datasets)
+                    //{
+                    //    var operationResult = operation.Calculate(values);
+                    //    var result = ApplyOperation(generator.Name, operationResult);
+                    //    action(result);
+                    //    await Task.Delay(generator.Interval * 1000);
+                    //}
                 });
                 tasks.Add(task);
             }
@@ -37,9 +56,9 @@ namespace OperationsSolver.Logic.Solver
             };
             return operation;
         }
-        private string ApplyOperation(IEnumerable<double> numbers, string operationName ,IOperation<double> operation)
+        private string ApplyOperation(string operationName , double operationResult)
         {
-            return $"{DateTime.Now:HH:mm:ss} {operationName} {operation.Calculate(numbers):#.##}";
+            return $"{DateTime.Now:HH:mm:ss} {operationName} {operationResult:#.##}";
         }
     }
 }
