@@ -2,6 +2,8 @@
 using OperationsSolver.Logic.IO;
 using OperationsSolver.Logic.Solver;
 using OperationsSolver.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 //var data = new Data()
 //{
@@ -24,8 +26,12 @@ using OperationsSolver.Models;
 //    }
 //};
 
-IReader<Data> reader = new JsonReader();
-var data = reader.ReadFrom("./data.json");
+IReader<Data> reader = new JsonReader<Data>();
+
+var options = new JsonSerializerOptions();
+options.Converters.Add(new JsonStringEnumConverter());
+
+var data = reader.ReadFrom("./data.json", options);
 
 await Task.WhenAll(new Solver().Solve(data, Console.WriteLine));
 

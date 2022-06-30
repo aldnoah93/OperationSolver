@@ -4,22 +4,24 @@ using System.Text.Json.Serialization;
 
 namespace OperationsSolver.Logic.IO
 {
-    public class JsonReader : IReader<Data>
+    public class JsonReader<TOut> : IReader<TOut>
     {
-        public Data ReadFrom(string path)
+        public TOut ReadFrom(string path, JsonSerializerOptions? options = null)
         {
-            string jsonString = File.ReadAllText(path);
+            ReadOnlySpan<char> jsonString = File.ReadAllText(path);
 
-            var options = new JsonSerializerOptions();
-            options.Converters.Add(new JsonStringEnumConverter());
-
-            var data = JsonSerializer.Deserialize<Data>(jsonString, options);
+            var data = JsonSerializer.Deserialize<TOut>(jsonString, options);
 
             if(data is null)
             {
-                throw new NullReferenceException("Json could not be deserialized!");
+                throw new NullReferenceException($"Json of type {{typeof(TOut)}} could not be deserialized!");
             }
             return data;
+        }
+
+        public TOut ReadFrom(string path)
+        {
+            return this.ReadFrom(path, null);
         }
     }
 }
