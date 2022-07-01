@@ -19,8 +19,10 @@ namespace OperationsSolver.Models
     {
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
+
         [JsonPropertyName("interval")]
         public int Interval { get; set; }
+
         [JsonPropertyName("operation")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public OperationType Operation { get; set; }

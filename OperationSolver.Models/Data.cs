@@ -6,6 +6,7 @@ namespace OperationsSolver.Models
     {
         [JsonPropertyName("datasets")]
         public IEnumerable<IEnumerable<double>> Datasets { get; set; } = new List<IEnumerable<double>>();
+
         [JsonPropertyName("generators")]
         public IList<Generator> Generators { get; set; } = new List<Generator>();
     }

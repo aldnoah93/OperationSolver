@@ -54,15 +54,5 @@ namespace OperationsSolver.Test.Logic.IO
 
             Assert.Throws<JsonException>(() => reader.ReadFrom("./dataBlank.json"));
         }
-
-        [Fact]
-        public void Read_Json_With_Null_Options_File_And_Deserialize_Not_Null()
-        {
-            JsonReader<Data> reader = new();
-
-            var data = reader.ReadFrom(dataJsonPath, null);
-
-            Assert.NotNull(data);
-        }
     }
 }

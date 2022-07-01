@@ -6,22 +6,17 @@ namespace OperationsSolver.Logic.IO
 {
     public class JsonReader<TOut> : IReader<TOut>
     {
-        public TOut ReadFrom(string path, JsonSerializerOptions? options = null)
+        public TOut ReadFrom(string path)
         {
             ReadOnlySpan<char> jsonString = File.ReadAllText(path);
 
-            var data = JsonSerializer.Deserialize<TOut>(jsonString, options);
+            var data = JsonSerializer.Deserialize<TOut>(jsonString);
 
             if(data is null)
             {
                 throw new NullReferenceException($"Json of type {{typeof(TOut)}} could not be deserialized!");
             }
             return data;
-        }
-
-        public TOut ReadFrom(string path)
-        {
-            return this.ReadFrom(path, null);
         }
     }
 }

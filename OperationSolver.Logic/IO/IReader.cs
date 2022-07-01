@@ -4,7 +4,6 @@ namespace OperationsSolver.Logic.IO
 {
     public interface IReader<TOut>
     {
-        TOut ReadFrom(string path, JsonSerializerOptions? options);
         TOut ReadFrom(string path);
     }
 }
