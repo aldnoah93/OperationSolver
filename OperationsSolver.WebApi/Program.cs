@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using OperationsSolver.Logic.Solver;
 using OperationsSolver.Models;
+using System.Text.Json.Serialization;
+using MvcJsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region SwaggerEnumfix
+/*
+ * Quick fix to display enums as text instead of numbers
+ * https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/2293
+ */
+builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(o => o.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+builder.Services.Configure<MvcJsonOptions>(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+#endregion
 
 var app = builder.Build();
 
@@ -18,25 +29,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateTime.Now.AddDays(index),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
 app.MapPost("/operationSolver/solve", async ([FromBody] Data data) => {
     IList<string> strings = new List<string>();
     await Task.WhenAll(new Solver().Solve(data, (string result) => strings.Add(result)));
@@ -45,8 +37,3 @@ app.MapPost("/operationSolver/solve", async ([FromBody] Data data) => {
 });
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
