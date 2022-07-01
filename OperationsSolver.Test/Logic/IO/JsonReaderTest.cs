@@ -8,21 +8,13 @@ namespace OperationsSolver.Test.Logic.IO
     public class JsonReaderTest
     {
         private const string dataJsonPath = "./data.json";
-        private readonly JsonSerializerOptions _options;
-
-        public JsonReaderTest()
-        {
-           this._options = new JsonSerializerOptions();
-            this._options.Converters.Add(new JsonStringEnumConverter());
-        }
-
 
         [Fact]
         public void Read_Json_File_And_Deserialize_Not_Null()
         {
             IReader<Data> reader = new JsonReader<Data>();
 
-            var data = reader.ReadFrom(dataJsonPath, this._options);
+            var data = reader.ReadFrom(dataJsonPath);
 
             Assert.NotNull(data);
         }
@@ -32,7 +24,7 @@ namespace OperationsSolver.Test.Logic.IO
         {
             IReader<Data> reader = new JsonReader<Data>();
 
-            var data = reader.ReadFrom(dataJsonPath, this._options);
+            var data = reader.ReadFrom(dataJsonPath);
 
             Assert.All(data.Datasets, (d) => Assert.NotEmpty(d));
         }
@@ -42,7 +34,7 @@ namespace OperationsSolver.Test.Logic.IO
         {
             IReader<Data> reader = new JsonReader<Data>();
 
-            var data = reader.ReadFrom(dataJsonPath, this._options);
+            var data = reader.ReadFrom(dataJsonPath);
 
             Assert.NotEmpty(data.Generators);
         }
@@ -52,7 +44,7 @@ namespace OperationsSolver.Test.Logic.IO
         {
             IReader<Data> reader = new JsonReader<Data>();
 
-            Assert.Throws<FileNotFoundException>(() => reader.ReadFrom("./data1.json", this._options));
+            Assert.Throws<FileNotFoundException>(() => reader.ReadFrom("./data1.json"));
         }
 
         [Fact]
@@ -60,7 +52,7 @@ namespace OperationsSolver.Test.Logic.IO
         {
             IReader<Data> reader = new JsonReader<Data>();
 
-            Assert.Throws<JsonException>(() => reader.ReadFrom("./dataBlank.json", this._options));
+            Assert.Throws<JsonException>(() => reader.ReadFrom("./dataBlank.json"));
         }
     }
 }

@@ -22,6 +22,7 @@ namespace OperationsSolver.Models
         [JsonPropertyName("interval")]
         public int Interval { get; set; }
         [JsonPropertyName("operation")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public OperationType Operation { get; set; }
     }
 }

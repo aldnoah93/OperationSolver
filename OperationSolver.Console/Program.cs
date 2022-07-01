@@ -28,10 +28,10 @@ using System.Text.Json.Serialization;
 
 IReader<Data> reader = new JsonReader<Data>();
 
-var options = new JsonSerializerOptions();
-options.Converters.Add(new JsonStringEnumConverter());
+//var options = new JsonSerializerOptions();
+//options.Converters.Add(new JsonStringEnumConverter());
 
-var data = reader.ReadFrom("./data.json", options);
+var data = reader.ReadFrom("./data.json");
 
 await Task.WhenAll(new Solver().Solve(data, Console.WriteLine));
 
