@@ -11,7 +11,7 @@ namespace OperationsSolver.Test.Logic.Operations
         [InlineData(new double[] { 1, 2, 3, 4 }, 10)]
         public void Calculate_Sum_Successfully(IEnumerable<double> input,double expectedResult)
         {
-            IOperation<double> operation = new Sum();
+            Sum operation = new();
 
             var result = operation.Calculate(input);
 
@@ -24,7 +24,7 @@ namespace OperationsSolver.Test.Logic.Operations
         [InlineData(new double[] { 1, 2, 3, 4 }, 11)]
         public void Calculate_Sum_Not_Successfully(IEnumerable<double> input, double expectedResult)
         {
-            IOperation<double> operation = new Sum();
+            Sum operation = new();
 
             var result = operation.Calculate(input);
 

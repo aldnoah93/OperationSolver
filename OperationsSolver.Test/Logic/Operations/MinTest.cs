@@ -1,9 +1,4 @@
 ﻿using OperationsSolver.Logic.Operations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OperationsSolver.Test.Logic.Operations
 {
@@ -15,7 +10,7 @@ namespace OperationsSolver.Test.Logic.Operations
         [InlineData(new double[] { 1, 2, 3, 4 }, 1)]
         public void Calculate_Min_Successfully(IEnumerable<double> input, double expectedResult)
         {
-            IOperation<double> operation = new Min();
+            Min operation = new();
 
             var result = operation.Calculate(input);
 
@@ -28,7 +23,7 @@ namespace OperationsSolver.Test.Logic.Operations
         [InlineData(new double[] { 1, 2, 3, 4 }, 3)]
         public void Calculate_Min_Not_Successfully(IEnumerable<double> input, double expectedResult)
         {
-            IOperation<double> operation = new Max();
+            Min operation = new();
 
             var result = operation.Calculate(input);
 

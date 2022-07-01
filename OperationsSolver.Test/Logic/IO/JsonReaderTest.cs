@@ -12,7 +12,7 @@ namespace OperationsSolver.Test.Logic.IO
         [Fact]
         public void Read_Json_File_And_Deserialize_Not_Null()
         {
-            IReader<Data> reader = new JsonReader<Data>();
+            JsonReader<Data> reader = new();
 
             var data = reader.ReadFrom(dataJsonPath);
 
@@ -22,7 +22,7 @@ namespace OperationsSolver.Test.Logic.IO
         [Fact]
         public void Read_Json_File_And_Deserialize_Has_Datasets()
         {
-            IReader<Data> reader = new JsonReader<Data>();
+            JsonReader<Data> reader = new();
 
             var data = reader.ReadFrom(dataJsonPath);
 
@@ -32,7 +32,7 @@ namespace OperationsSolver.Test.Logic.IO
         [Fact]
         public void Read_Json_File_And_Deserialize_Has_Generators()
         {
-            IReader<Data> reader = new JsonReader<Data>();
+            JsonReader<Data> reader = new();
 
             var data = reader.ReadFrom(dataJsonPath);
 
@@ -42,7 +42,7 @@ namespace OperationsSolver.Test.Logic.IO
         [Fact]
         public void Read_Json_File_And_Deserialize_File_Not_Found()
         {
-            IReader<Data> reader = new JsonReader<Data>();
+            JsonReader<Data> reader = new();
 
             Assert.Throws<FileNotFoundException>(() => reader.ReadFrom("./data1.json"));
         }
@@ -50,9 +50,19 @@ namespace OperationsSolver.Test.Logic.IO
         [Fact]
         public void Read_Json_File_And_Deserialize_Json_Exception()
         {
-            IReader<Data> reader = new JsonReader<Data>();
+            JsonReader<Data> reader = new();
 
             Assert.Throws<JsonException>(() => reader.ReadFrom("./dataBlank.json"));
+        }
+
+        [Fact]
+        public void Read_Json_With_Null_Options_File_And_Deserialize_Not_Null()
+        {
+            JsonReader<Data> reader = new();
+
+            var data = reader.ReadFrom(dataJsonPath, null);
+
+            Assert.NotNull(data);
         }
     }
 }
