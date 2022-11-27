@@ -3,22 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Logic", "OperationSolver.Logic\OperationsSolver.Logic.csproj", "{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6} = {DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Models", "OperationSolver.Models\OperationsSolver.Models.csproj", "{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationSolver.Console", "OperationSolver.Console\OperationSolver.Console.csproj", "{CB24BF45-C75F-49C7-9480-25DBD2465BC1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Test", "OperationsSolver.Test\OperationsSolver.Test.csproj", "{2BC29C22-15F1-4464-9A3F-8A965C625DF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationsSolver.WebApi", "OperationsSolver.WebApi\OperationsSolver.WebApi.csproj", "{E4D0EF37-AE1D-4D43-95A1-06674C1950DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.WebApi", "OperationsSolver.WebApi\OperationsSolver.WebApi.csproj", "{E4D0EF37-AE1D-4D43-95A1-06674C1950DD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6} = {DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}
-		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A} = {F714AA76-ABF5-4202-BEC4-F27B057D4F9A}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationsSolver.Application", "OperationSolver.Application\OperationsSolver.Application.csproj", "{751EE08C-5CEB-444C-9785-0D4B9F5503B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F714AA76-ABF5-4202-BEC4-F27B057D4F9A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA83FB4C-91EC-4A3D-B871-5168C3E9ADF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,6 +38,10 @@ Global
 		{E4D0EF37-AE1D-4D43-95A1-06674C1950DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4D0EF37-AE1D-4D43-95A1-06674C1950DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4D0EF37-AE1D-4D43-95A1-06674C1950DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{751EE08C-5CEB-444C-9785-0D4B9F5503B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{751EE08C-5CEB-444C-9785-0D4B9F5503B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{751EE08C-5CEB-444C-9785-0D4B9F5503B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{751EE08C-5CEB-444C-9785-0D4B9F5503B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

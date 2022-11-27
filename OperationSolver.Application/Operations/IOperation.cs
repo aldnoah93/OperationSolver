@@ -1,4 +1,4 @@
-﻿namespace OperationsSolver.Logic.Operations
+﻿namespace OperationsSolver.Application.Operations
 {
     public interface IOperation<T>
     {

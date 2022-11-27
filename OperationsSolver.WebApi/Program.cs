@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using OperationsSolver.Logic.Solver;
+using OperationsSolver.Application.Solver;
 using OperationsSolver.Models;
 using System.Text.Json.Serialization;
 using MvcJsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;

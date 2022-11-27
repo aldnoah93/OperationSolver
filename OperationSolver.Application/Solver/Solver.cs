@@ -1,7 +1,7 @@
-﻿using OperationsSolver.Logic.Operations;
+﻿using OperationsSolver.Application.Operations;
 using OperationsSolver.Models;
 
-namespace OperationsSolver.Logic.Solver
+namespace OperationsSolver.Application.Solver
 {
     public class Solver : ISolver
     {

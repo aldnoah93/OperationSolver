@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace OperationsSolver.Logic.IO
+namespace OperationsSolver.Application.IO
 {
     public class JsonReader<TOut> : IReader<TOut>
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace OperationsSolver.Logic.IO
+namespace OperationsSolver.Application.IO
 {
     public interface IReader<TOut>
     {

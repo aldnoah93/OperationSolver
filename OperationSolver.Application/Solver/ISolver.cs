@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OperationsSolver.Logic.Solver
+namespace OperationsSolver.Application.Solver
 {
     public interface ISolver
     {

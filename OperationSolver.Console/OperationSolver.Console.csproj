@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OperationSolver.Logic\OperationsSolver.Logic.csproj" />
+    <ProjectReference Include="..\OperationSolver.Application\OperationsSolver.Application.csproj" />
     <ProjectReference Include="..\OperationSolver.Models\OperationsSolver.Models.csproj" />
   </ItemGroup>
 

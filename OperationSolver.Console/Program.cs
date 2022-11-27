@@ -1,6 +1,6 @@
 ﻿
-using OperationsSolver.Logic.IO;
-using OperationsSolver.Logic.Solver;
+using OperationsSolver.Application.IO;
+using OperationsSolver.Application.Solver;
 using OperationsSolver.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
