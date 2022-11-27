@@ -1,8 +1,8 @@
 ﻿
 using OperationsSolver.Application.IO;
-using OperationsSolver.Application.Operations;
 using OperationsSolver.Application.Solver;
 using OperationsSolver.Infrastructure.IO;
+using OperationsSolver.Infrastructure.Operations;
 using OperationsSolver.Models;
 
 //var data = new Data()

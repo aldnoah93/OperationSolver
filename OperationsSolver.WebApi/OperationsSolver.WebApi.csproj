@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OperationSolver.Application\OperationsSolver.Application.csproj" />
+    <ProjectReference Include="..\OperationSolver.Infrastructure\OperationSolver.Infrastructure.csproj" />
     <ProjectReference Include="..\OperationSolver.Models\OperationsSolver.Models.csproj" />
   </ItemGroup>
 
