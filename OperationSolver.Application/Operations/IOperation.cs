@@ -1,7 +1,7 @@
 ﻿namespace OperationsSolver.Application.Operations
 {
-    public interface IOperation<T>
+    public interface IOperation
     {
-        T Calculate(IEnumerable<T> input);
+        double Calculate(IEnumerable<double> input);
     }
 }

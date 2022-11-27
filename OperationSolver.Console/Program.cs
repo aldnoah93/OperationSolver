@@ -1,5 +1,6 @@
 ﻿
 using OperationsSolver.Application.IO;
+using OperationsSolver.Application.Operations;
 using OperationsSolver.Application.Solver;
 using OperationsSolver.Infrastructure.IO;
 using OperationsSolver.Models;
@@ -32,5 +33,7 @@ IReader<Data> reader = new JsonReader<Data>();
 
 var data = reader.ReadFrom("./data.json");
 
-await Task.WhenAll(new Solver().Solve(data, Console.WriteLine));
+var operationFactory = new OperationFactory();
+
+await Task.WhenAll(new Solver(operationFactory).Solve(data, Console.WriteLine));
 

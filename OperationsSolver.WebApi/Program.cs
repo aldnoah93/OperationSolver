@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using OperationsSolver.Application.Operations;
 using OperationsSolver.Application.Solver;
 using OperationsSolver.Models;
 using System.Text.Json.Serialization;
@@ -10,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<IOperationFactory, OperationFactory>();
+builder.Services.AddScoped<ISolver, Solver>();
 
 #region SwaggerEnumfix
 /*
@@ -29,9 +33,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapPost("/operationSolver/solve", async ([FromBody] Data data) => {
+app.MapPost("/operationSolver/solve", async ([FromBody] Data data, ISolver solver) => {
+
     IList<string> strings = new List<string>();
-    await Task.WhenAll(new Solver().Solve(data, (string result) => strings.Add(result)));
+
+    await Task.WhenAll(solver.Solve(data, (string result) => strings.Add(result)));
 
     return String.Join("\n", strings);
 });

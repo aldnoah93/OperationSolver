@@ -1,6 +1,6 @@
 ﻿namespace OperationsSolver.Application.Operations
 {
-    public class Min : IOperation<double>
+    internal class Min : IOperation
     {
         public double Calculate(IEnumerable<double> input)
         {

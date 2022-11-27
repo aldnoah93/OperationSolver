@@ -5,6 +5,13 @@ namespace OperationsSolver.Application.Solver
 {
     public class Solver : ISolver
     {
+        public readonly IOperationFactory _operationFactory;
+
+        public Solver(IOperationFactory operationFactory)
+        {
+            _operationFactory = operationFactory;
+        }
+
         public IList<Task> Solve(Data data, Action<string> action)
         {
             var tasks = new List<Task>();
@@ -12,7 +19,7 @@ namespace OperationsSolver.Application.Solver
             {
                 var task = Task.Run(async() =>
                 {
-                    IOperation<double> operation = OperationFactory(generator.Operation);
+                    IOperation operation = _operationFactory.GetOperation(generator.Operation);
 
                     var size = data.Datasets.Count();
                     var enumerator = data.Datasets.GetEnumerator();
@@ -29,34 +36,13 @@ namespace OperationsSolver.Application.Solver
                         }
 
                     }
-
-
-                    //foreach (var values in data.Datasets)
-                    //{
-                    //    var operationResult = operation.Calculate(values);
-                    //    var result = ApplyOperation(generator.Name, operationResult);
-                    //    action(result);
-                    //    await Task.Delay(generator.Interval * 1000);
-                    //}
                 });
                 tasks.Add(task);
             }
             return tasks;
         }
 
-        public IOperation<double> OperationFactory(OperationType ot)
-        {
-            IOperation<double> operation = ot switch
-            {
-                OperationType.Sum => new Sum(),
-                OperationType.Average => new Average(),
-                OperationType.Min => new Min(),
-                OperationType.Max => new Max(),
-                _ => throw new NotSupportedException("The operation is not supported!"),
-            };
-            return operation;
-        }
-        private string ApplyOperation(string operationName , double operationResult)
+        private static string ApplyOperation(string operationName , double operationResult)
         {
             return $"{DateTime.Now:HH:mm:ss} {operationName} {operationResult:#.##}";
         }

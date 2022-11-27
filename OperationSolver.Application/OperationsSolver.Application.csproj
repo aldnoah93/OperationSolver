@@ -9,5 +9,9 @@
   <ItemGroup>
     <ProjectReference Include="..\OperationSolver.Models\OperationsSolver.Models.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="OperationsSolver.Test" />
+  </ItemGroup>
 
 </Project>

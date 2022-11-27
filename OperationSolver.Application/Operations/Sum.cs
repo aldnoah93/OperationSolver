@@ -1,6 +1,6 @@
 ﻿namespace OperationsSolver.Application.Operations
 {
-    public class Sum : IOperation<double>
+    internal class Sum : IOperation
     {
         public double Calculate(IEnumerable<double> input)
         {
