@@ -10,5 +10,9 @@
     <ProjectReference Include="..\OperationSolver.Application\OperationsSolver.Application.csproj" />
     <ProjectReference Include="..\OperationSolver.Models\OperationsSolver.Models.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="OperationsSolver.Test" />
+  </ItemGroup>
 
 </Project>
