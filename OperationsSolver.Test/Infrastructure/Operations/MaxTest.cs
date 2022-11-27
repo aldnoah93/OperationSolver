@@ -1,16 +1,16 @@
-﻿using OperationsSolver.Application.Operations;
+﻿using OperationsSolver.Infrastructure.Operations;
 
 namespace OperationsSolver.Test.Logic.Operations
 {
-    public class MinTest
+    public class MaxTest
     {
         [Theory]
-        [InlineData(new double[] { 1, 2, 3, 4, 5.5 }, 1)]
-        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 1)]
-        [InlineData(new double[] { 1, 2, 3, 4 }, 1)]
-        public void Calculate_Min_Successfully(IEnumerable<double> input, double expectedResult)
+        [InlineData(new double[] { 1, 2, 3, 4, 5.5 }, 5.5)]
+        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 5)]
+        [InlineData(new double[] { 1, 2, 3, 4 }, 4)]
+        public void Calculate_Max_Successfully(IEnumerable<double> input, double expectedResult)
         {
-            Min operation = new();
+            Max operation = new();
 
             var result = operation.Calculate(input);
 
@@ -21,9 +21,9 @@ namespace OperationsSolver.Test.Logic.Operations
         [InlineData(new double[] { 1, 2, 3, 4, 5.5 }, 6)]
         [InlineData(new double[] { 1, 2, 3, 4, 5 }, 4)]
         [InlineData(new double[] { 1, 2, 3, 4 }, 3)]
-        public void Calculate_Min_Not_Successfully(IEnumerable<double> input, double expectedResult)
+        public void Calculate_Max_Not_Successfully(IEnumerable<double> input, double expectedResult)
         {
-            Min operation = new();
+            Max operation = new();
 
             var result = operation.Calculate(input);
 

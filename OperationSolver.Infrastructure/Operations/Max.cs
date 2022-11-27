@@ -1,4 +1,6 @@
-﻿namespace OperationsSolver.Application.Operations
+﻿using OperationsSolver.Application.Operations;
+
+namespace OperationsSolver.Infrastructure.Operations
 {
     internal class Max : IOperation
     {

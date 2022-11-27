@@ -1,11 +1,7 @@
-﻿using OperationsSolver.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OperationsSolver.Application.Operations;
+using OperationsSolver.Models;
 
-namespace OperationsSolver.Application.Operations
+namespace OperationsSolver.Infrastructure.Operations
 {
     public class OperationFactory : IOperationFactory
     {

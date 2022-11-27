@@ -1,4 +1,4 @@
-﻿using OperationsSolver.Application.Operations;
+﻿using OperationsSolver.Infrastructure.Operations;
 
 namespace OperationsSolver.Test.Logic.Operations
 {
