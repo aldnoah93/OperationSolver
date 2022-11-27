@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OperationSolver.Application\OperationsSolver.Application.csproj" />
+    <ProjectReference Include="..\OperationSolver.Infrastructure\OperationSolver.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="dataBlank.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

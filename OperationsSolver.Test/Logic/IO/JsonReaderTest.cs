@@ -1,7 +1,6 @@
-﻿using OperationsSolver.Application.IO;
+﻿using OperationsSolver.Infrastructure.IO;
 using OperationsSolver.Models;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace OperationsSolver.Test.Logic.IO
 {

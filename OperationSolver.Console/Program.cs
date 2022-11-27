@@ -1,9 +1,8 @@
 ﻿
 using OperationsSolver.Application.IO;
 using OperationsSolver.Application.Solver;
+using OperationsSolver.Infrastructure.IO;
 using OperationsSolver.Models;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 //var data = new Data()
 //{
