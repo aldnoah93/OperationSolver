@@ -31,9 +31,17 @@ IReader<Data> reader = new JsonReader<Data>();
 //var options = new JsonSerializerOptions();
 //options.Converters.Add(new JsonStringEnumConverter());
 
-var data = reader.ReadFrom("./data.json");
+try
+{
+    Data data = reader.ReadFrom("./data.json");
 
-var operationFactory = new OperationFactory();
+    var operationFactory = new OperationFactory();
 
-await Task.WhenAll(new Solver(operationFactory).Solve(data, Console.WriteLine));
+    await Task.WhenAll(new Solver(operationFactory).Solve(data, Console.WriteLine));
+}
+catch( NullReferenceException ex)
+{
+    Console.Error.WriteLine($"Data is null:\n ${ex.Message}");
+}
+
 
