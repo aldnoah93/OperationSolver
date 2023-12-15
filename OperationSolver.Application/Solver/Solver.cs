@@ -28,7 +28,7 @@ namespace OperationsSolver.Application.Solver
                         enumerator.MoveNext();
                         var values = enumerator.Current;
                         var operationResult = operation.Calculate(values);
-                        var result = ApplyOperation(generator.Name, operationResult);
+                        var result = ApplyResultFormat(generator.Name, operationResult);
                         action(result);
                         if (i != size - 1)
                         {
@@ -42,7 +42,7 @@ namespace OperationsSolver.Application.Solver
             return tasks;
         }
 
-        private static string ApplyOperation(string operationName , double operationResult)
+        private static string ApplyResultFormat(string operationName , double operationResult)
         {
             return $"{DateTime.Now:HH:mm:ss} {operationName} {operationResult:#.##}";
         }
